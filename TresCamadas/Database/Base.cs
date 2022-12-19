@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
@@ -30,24 +31,19 @@ namespace Database
         {
             string? connStr = null;
             MySqlConnection conn;
-            connStr = "server=localhost;user=root;database=trescamadas;port=3306;password=root;";
+            connStr = "server=localhost;user=root;database=trescamadas;port=3306;password=179179;";
             conn = new MySqlConnection(connStr);
             try
             {
                 Console.WriteLine("Connecting to MySQL...");
                 conn.Open();
-
-                string sql = "SELECT * FROM usuarios";
+              
+                //string sql = "INSERT INTO "+this.GetType().Name+"s (cpf, nome, telefone) VALUES ('${this.CPF}', '${this.Nome}', '${this.Telefone}')";
+                string sql = "INSERT INTO usuarios (cpf, nome, telefone) VALUES ('"+this.CPF+"', '"+this.Nome+"', '"+this.Telefone+"')";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    Console.WriteLine(rdr[0] + " -- " + rdr[1]);
-                }
-                rdr.Close();
+                cmd.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }

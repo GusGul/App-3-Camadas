@@ -22,7 +22,7 @@ namespace TresCamadas
             usuario.CPF = txtCPF.Text;
             usuario.Gravar();
 
-            MessageBox.Show("Conexão!");
+            MessageBox.Show("Cadastrado com sucesso!");
         }
     }
 }
