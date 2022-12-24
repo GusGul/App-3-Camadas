@@ -1,4 +1,5 @@
-using Business;
+using Business.Models;
+using Business.Services;
 
 namespace TresCamadas
 {
@@ -20,7 +21,8 @@ namespace TresCamadas
             usuario.Nome = txtNome.Text;
             usuario.Telefone = txtTelefone.Text;
             usuario.CPF = txtCPF.Text;
-            usuario.Gravar();
+
+            new UsuarioService().Gravar(usuario);
 
             MessageBox.Show("Cadastrado com sucesso!");
         }

@@ -1,0 +1,38 @@
+﻿@using Business.Models
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Lista de clientes</h1>
+</div>
+
+<hr />
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Telefone</th>
+      <th style="width: 30px;" scope="col"></th>
+      <th style="width: 30px;" scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+        @foreach (Usuario usuario in ViewBag.usuarios)
+        {
+            <tr>
+                <td>@usuario.CPF</td>
+                <td>@usuario.Nome</td>
+                <td>@usuario.Telefone</td>
+                <td>
+                    <a href="#" class="btn btn-warning">Editar</a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-danger">Apagar</a>
+                </td>
+            </tr>
+        }
+  </tbody>
+</table>
